@@ -5,7 +5,7 @@ const UserModel = require("../models/contact");
 const router = express.Router();
 // router.use(express.json())
 
-mongoose.connect("mongodb://localhost:27017/contactDatas");
+mongoose.connect("mongodb://127.0.0.1:27017/contactDatas");
 
 router.get("/", (req, res) => {
   UserModel.find({})

@@ -1,11 +1,17 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const UserModel = require("../models/contact");
-
+require('dotenv').config();
 const router = express.Router();
 // router.use(express.json())
 
-mongoose.connect("mongodb://127.0.0.1:27017/contactDatas");
+const mongoURI = process.env.DB_URI
+
+mongoose.connect(mongoURI).then((result) => {
+  console.log("DB Connected");
+}).catch((err) => {
+  console.log(err);
+});
 
 router.get("/", (req, res) => {
   UserModel.find({})
